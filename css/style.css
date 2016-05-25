@@ -1,0 +1,44 @@
+.quadro {
+  width: auto;
+  float: left;
+  margin-left: 10px;
+}
+.tabuleiro {
+  border: 1px solid gainsboro;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+}
+.tabuleiro td {
+  width: 10px;
+  height: 10px;
+  border: 1px solid gainsboro;
+}
+.celula {
+  background-repeat: no-repeat;
+  background-position: center center;
+  text-align: center;
+  font-size: 100%;
+  font-weight: bolder;
+}
+.letra-classificacao .celula {
+  cursor: pointer;
+}
+#mask {
+  position:absolute;
+  left:0;
+  top:0;
+  z-index:9000;
+  background-color:#FFF;
+  display:none;
+}
+.window {
+  position:absolute;
+  top: auto;
+  bottom: auto;
+  right: auto;
+  left: auto;
+  display:none;
+  z-index:9999;
+  background: transparent!important;
+}
