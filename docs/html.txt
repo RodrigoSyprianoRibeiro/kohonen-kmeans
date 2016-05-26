@@ -13,7 +13,7 @@
         &lt;/div&gt;
         &lt;div class="quantidade_geracoes"&gt;
             &lt;div class="knob-label"&gt;Quantidade de gerações&lt;/div&gt;
-            &lt;input type="text" id="quantidade_geracoes" name="quantidade_geracoes" class="knob" value="2000" data-min="1" data-max="5000" data-width="60" data-height="60" data-fgColor="#f56954"/&gt;
+            &lt;input type="text" id="quantidade_geracoes" name="quantidade_geracoes" class="knob" value="3000" data-min="1" data-max="5000" data-width="60" data-height="60" data-fgColor="#f56954"/&gt;
         &lt;/div&gt;
         &lt;div class="raio"&gt;
             &lt;div class="knob-label"&gt;Raio da vizinhança&lt;/div&gt;

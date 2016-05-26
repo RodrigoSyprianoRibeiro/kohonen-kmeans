@@ -91,7 +91,7 @@ $(function () {
     $('#quantidade_clusters').trigger('configure', {
       max: valueMax
     });
-    $('#quantidade_clusters').val(5);
+    $('#quantidade_clusters').val(valueMax);
   };
 
   function gerarLetras() {

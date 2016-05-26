@@ -40,7 +40,7 @@
                         <a class="navbar-brand" href="">
                             <h1>
                                 <img src="images/logo-kohonen.png" alt="logo-kohonen">
-                                Redes Neurais - Kohonen e Kmeans
+                                Kohonen e Kmeans
                                 <img src="images/logo-kmeans.png" alt="logo-kmeans">
                             </h1>
                         </a>
@@ -77,7 +77,7 @@
                                         </div><!-- ./col -->
                                         <div class="col-md-12 margin-bottom text-center quantidade_geracoes">
                                             <div class="knob-label">Quantidade de gerações</div>
-                                            <input type="text" id="quantidade_geracoes" name="quantidade_geracoes" class="knob" value="2000" data-min="1" data-max="5000" data-width="60" data-height="60" data-fgColor="#f56954"/>
+                                            <input type="text" id="quantidade_geracoes" name="quantidade_geracoes" class="knob" value="3000" data-min="1" data-max="5000" data-width="60" data-height="60" data-fgColor="#f56954"/>
                                         </div><!-- ./col -->
                                         <div class="col-md-12 margin-bottom text-center raio">
                                             <div class="knob-label">Raio da vizinhança</div>

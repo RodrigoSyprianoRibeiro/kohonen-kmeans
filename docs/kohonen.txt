@@ -12,8 +12,8 @@ class Kohonen
 
     public $matrizW; // Matriz com os pesos.
 
-    public $tamanhoVetorJ; // Tamanho do vetor de saída. (Classes a serem separadas na saída)
-    public $vetorJ; // Soma pondera do vetor de entrada ($vetorX) com vetor de saída ($vetorJ).
+    public $quantidadeClusters; // Quantidade de classes a serem classificadas.
+    public $somaPonderada; // Soma pondera do vetor de entrada ($vetorX) com vetor de saída ($somaPonderada).
 
     function __construct($dados) {
         $this->geracaoAtual = 1;
@@ -28,8 +28,8 @@ class Kohonen
 
         $this->matrizW = array();
 
-        $this->tamanhoVetorJ = (int) $dados['quantidade_clusters'];
-        $this->vetorJ = array();
+        $this->quantidadeClusters = (int) $dados['quantidade_clusters'];
+        $this->somaPonderada = array();
     }
 
     public function iniciarTreinamento($letrasTreinamento) {
@@ -42,16 +42,14 @@ class Kohonen
 
                 $this->vetorX = $letra->getVetorCodigo();
 
-                $this->vetorJ = $this->somaPonderada();
+                $this->somaPonderada = $this->somaPonderada();
 
-                asort($this->vetorJ); // Ordena o vetorJ do menor para o maior.
+                asort($this->somaPonderada); // Ordena o somaPonderada do menor para o maior.
 
                 $this->atualizarMatrizW();
             }
 
             $this->atualizarTaxaAprendizado();
-
-            $this->reduzirRaio();
 
             $this->geracaoAtual++;
             $this->quantidadeGeracoes--;
@@ -66,11 +64,11 @@ class Kohonen
 
             $this->vetorX = $letra->getVetorCodigo();
 
-            $this->vetorJ = $this->somaPonderada();
+            $this->somaPonderada = $this->somaPonderada();
 
-            asort($this->vetorJ); // Ordena o vetorJ do menor para o maior.
+            asort($this->somaPonderada); // Ordena o somaPonderada do menor para o maior.
 
-            $resultadoClassificao[key($this->vetorJ)][] = $letra;
+            $resultadoClassificao[key($this->somaPonderada)][] = $letra;
         }
         ksort($resultadoClassificao);
         return $resultadoClassificao;
@@ -80,16 +78,16 @@ class Kohonen
 
         $this->vetorX = $letra->getVetorCodigo();
 
-        $this->vetorJ = $this->somaPonderada();
+        $this->somaPonderada = $this->somaPonderada();
 
-        asort($this->vetorJ); // Ordena o vetorJ do menor para o maior.
+        asort($this->somaPonderada); // Ordena o somaPonderada do menor para o maior.
 
-        return array(key($this->vetorJ) => $letra);
+        return array(key($this->somaPonderada) => $letra);
     }
 
     public function iniciarMatrizW() {
         for ($i = 0; $i < $this->tamanhoVetorX; $i++) {
-            for ($j = 0; $j < $this->tamanhoVetorJ; $j++) {
+            for ($j = 0; $j < $this->quantidadeClusters; $j++) {
                 $this->matrizW[$i][$j] = $this->gerarPesosAleatorios();
             }
         }
@@ -97,7 +95,7 @@ class Kohonen
 
     public function somaPonderada() {
         $vetorSaida = array();
-        for ($j = 0; $j < $this->tamanhoVetorJ; $j++) {
+        for ($j = 0; $j < $this->quantidadeClusters; $j++) {
             $vetorSaida[$j] = 0;
             for ($i = 0; $i < $this->tamanhoVetorX ; $i++) {
                 $vetorSaida[$j] += round(pow($this->matrizW[$i][$j] - $this->vetorX[$i], 2), 4);
@@ -107,11 +105,11 @@ class Kohonen
     }
 
     public function atualizarMatrizW() {
-        $listaJ[] = key($this->vetorJ);
+        $listaJ[] = key($this->somaPonderada);
         if ($this->raio > 0) {
             for ($i = $this->raio; $i > 0; $i--) {
-                $listaJ[] = (key($this->vetorJ) - $i) >= 0 ? key($this->vetorJ) - $i : count($this->vetorJ) - $i;
-                $listaJ[] = (key($this->vetorJ) + $i) < count($this->vetorJ) ? key($this->vetorJ) + $i : $i - 1;
+                $listaJ[] = (key($this->somaPonderada) - $i) >= 0 ? key($this->somaPonderada) - $i : count($this->somaPonderada) - $i;
+                $listaJ[] = (key($this->somaPonderada) + $i) < count($this->somaPonderada) ? key($this->somaPonderada) + $i : $i - 1;
             }
         }
         for ($i = 0; $i < $this->tamanhoVetorX; $i++) {
@@ -123,10 +121,6 @@ class Kohonen
 
     public function atualizarTaxaAprendizado() {
         $this->taxaAprendizado = ($this->taxaAprendizado > $this->descrescimoTaxaAprendizado) ? round($this->taxaAprendizado - $this->descrescimoTaxaAprendizado, 2) : $this->taxaAprendizado;
-    }
-
-    public function reduzirRaio() {
-        $this->raio = ($this->raio > 0) ? ($this->raio - 1) : $this->raio;
     }
 
     public function gerarPesosAleatorios() {
