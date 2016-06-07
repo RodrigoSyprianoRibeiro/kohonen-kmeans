@@ -78,6 +78,7 @@ $(function () {
     var valueMax = 0;
     if ($('#algoritmo').val() === 'kohonen') {
       valueMax = 25;
+      $('.quantidade_geracoes').removeClass('hide');
       $('.raio').removeClass('hide');
       $('.taxa_aprendizagem').removeClass('hide');
       $('.descrescimo_taxa_aprendizagem').removeClass('hide');
