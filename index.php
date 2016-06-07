@@ -177,7 +177,7 @@
                             </div>
                             <div class="tab-pane fade" id="tab1-item3">
                                 <div class="col-sm-12 wow fadeIn" data-wow-duration="500ms" data-wow-delay="300ms">
-                                    <h2 class="page-header"><strong>Autor</strong></h2>
+                                    <h2 class="page-header"><strong>Autores</strong></h2>
                                     <blockquote>
                                         <p>Rodrigo Ribeiro e Renato Paschoal de Araujo.</p>
 
