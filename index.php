@@ -77,7 +77,7 @@
                                         </div><!-- ./col -->
                                         <div class="col-md-12 margin-bottom text-center quantidade_geracoes">
                                             <div class="knob-label">Quantidade de gerações</div>
-                                            <input type="text" id="quantidade_geracoes" name="quantidade_geracoes" class="knob" value="3000" data-min="1" data-max="5000" data-width="60" data-height="60" data-fgColor="#f56954"/>
+                                            <input type="text" id="quantidade_geracoes" name="quantidade_geracoes" class="knob" value="3000" data-min="1" data-max="10000" data-width="60" data-height="60" data-fgColor="#f56954"/>
                                         </div><!-- ./col -->
                                         <div class="col-md-12 margin-bottom text-center raio">
                                             <div class="knob-label">Raio da vizinhança</div>
@@ -179,7 +179,7 @@
                                 <div class="col-sm-12 wow fadeIn" data-wow-duration="500ms" data-wow-delay="300ms">
                                     <h2 class="page-header"><strong>Autor</strong></h2>
                                     <blockquote>
-                                        <p>Rodrigo Ribeiro.</p>
+                                        <p>Rodrigo Ribeiro e Renato Paschoal de Araujo.</p>
 
                                         <footer>Trabalho da disciplina <cite title="Aprendizado de Máquina">Aprendizado de Máquina</cite>
                                         do curso de Ciência da Computação da UNISUL (Universidade do Sul de Santa Catarina).</footer>
